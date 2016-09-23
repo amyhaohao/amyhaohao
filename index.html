@@ -13,6 +13,9 @@
 <script type="text/javascript" src="zepto.min.js"></script>
 <script>
     $("div").html("test");
+    $.get("data.json", function(data){
+        alert(data);
+    })
 </script>
 </body>
 </html>
