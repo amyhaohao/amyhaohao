@@ -1,21 +1,87 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title></title>
-</head>
-<body>
-<div>
+<html lang="en" ng-app="o2oApp">
+    <head>
+        <title>菜籽</title>     
+<!--        <link rel="shortcut icon" href="images/44.png" type="image/png" />        -->
+        <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="expires" content="0" />
+        <meta content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,target-densitydpi=medium-dpi" name="viewport" />
+        <link rel="stylesheet" type="text/css" href="css/style.css?20150313" />
+        <script>
+            (function(){var l = window.location + "";if(l.indexOf("?rm")!=-1) return;var s = l.split("#");if(s[0].indexOf(".html")==-1 && s[0].charAt(s[0].length-1) != "/") s[0] += "/";s[0] += "?rm="+Math.random();window.location=s.join("#");})();
+        </script> 
+    </head>
+    <body>
+       <div class="bodyContainer" ng-class="{sideBarShow:showSideBar}">
+            <div ng-view class="viewContainer" autoscroll="true"></div>
+            <div class="mask sideBarMask" ng-click="showSideBar=false"></div>
+            <div class="sideBar" ng-controller="SideBarCtrl" ng-click="$parent.showSideBar=false">
+                <div class="user">
+                    <div class="u1" ng-if="$parent.user==undefined||$parent.user==null">
+                        <div>您还未登录</div>
+                        <div class="btn font-green"><a href="#!/signin" class="font-green">登录  / 注册</a></div>
+                    </div>
+                    <div class="u2" ng-if="$parent.user != undefined && $parent.user!=null">
+                        <a href=""><img src="images/29.png" /></a>
+                        <a href="">{{$parent.user.name}}</a>
+                        <span class="font-green" ng-click="logout()" ng-hide="wx">退出</span>
+                    </div>
+                </div>
+                <div class="menu">
+                    <a href="#!/" class="a1">首页</a>
+                    <a href="#!/my/orders" class="a2">我的订单</a>
+                    <a href="#!/my/addresses" class="a4">地址管理</a>
+                    <a href="#!/my/phone" class="a5">绑定手机</a>
+                    <a href="#!/about" class="a6">关于</a> 
+                </div>
+            </div> 
+        </div>
+        <div ng-controller="CartCtrl">
+            <a class="cartIcon" ng-class="{cartIconShow:cartShopId!=-1}" ng-click="$root.showCartDetail=true;editCart=false;checkall=false;cartSvc.checkAll(false)"><span class="bg-orange" ng-show="cart.count>0">{{cart.count}}</span></a>
+            <div class="carts" ng-class="{cartShow:showCartDetail, cartEdit:editCart, cartEmpty:cart.count<=0}">
+                <div class="cartDetail">
+                    <div class="shopname font-dark">{{cart.shop.name+cart.shop.id}}</div>
+                    <div class="bg-white">
+                        <div class="cartItem" ng-repeat="c in cart.items">
+                            <span class="icon i-round" ng-class="{roundSelected:c.check}" ng-click="c.check=!c.check"></span><img src="images/44.png" />
+                            <div class="ellipsis font-black font-15">{{c.name+c.id}}</div>
+                            <div class="price font-dark font-12"><span class="font-red font-18">{{c.price.toFixed(1)}}</span> 元</div>
+                            <span class="num font-12">x{{c.quantity}}</span>
+                            <span class="quantity"><span ng-click="c.quantity>1?cartSvc.del(c):delCartItem($event, $index);"></span><span class="input" ng-scroll="c.quantity"></span><span ng-click="cartSvc.add(c)"></span></span>
+                            <div class="del bg-red" ng-click="delCartItem($event, $index)">删除</div>
+                        </div>
+                    </div>
+                    <div class="empty">购物车空空哒<br>去挑选爱吃的菜菜吧~<br><a href="#!/" class="btn">去逛逛</a></div>
+                    <div style="height:49px;"></div>
+                </div>
+                <div class="cartTitle font-dark bg-white font-17">购物车<span class="font-orange" ng-click="$root.showCartDetail=false">关闭</span><span class="font-orange s" ng-click="editCart=!editCart">{{editCart?"完成":"编辑"}}</span></div>
+                <div class="cartAmount font-12 bg-white">
+                    <div class="font-15" ng-click="checkall=!checkall;cartSvc.checkAll(checkall)"><span class="icon i-round" ng-class="{roundSelected:checkall}"></span>全选</div>
+                    <div class="r">合计:<span class="font-red font-15">&yen;{{cartSvc.getAmount().toFixed(2)}}</span>不含运费
+                        <span class="bg-red btn font-15" ng-class="{'bg-disable':cartDisabled||cartSvc.getCount()<=0}" ng-click="commit()">去结算</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="loading">
+                <noscript><br/>请打开JavaScript功能</noscript>
+        </div> 
+        <div class="alertPop"></div>
+          <script src="js/libs/jquery-1.10.2.min.js"></script>          
+    <script src="js/libs/angular.min.js"></script>
+    <script src="js/libs/angular-route.min.js"></script>
+    <script src="js/libs/angular-resource.min.js"></script>
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=UMgv3OC6YsXrEwSFV0YBGGiO"></script>
+<!--
+    <script src="js/app.js?20150716"></script>
+    <script src="js/services.js?20150716"></script>
+    <script src="js/controllers.js?20150716"></script>
+    <script src="js/util.js?20150716"></script>
+-->
     
-</div>
-<script type="text/javascript" src="zepto.min.js"></script>
-<script>
-    $("div").html("test");
-    $.get("data.json", function(data){
-        alert(data);
-    },function(){})
-</script>
-</body>
+    <script src="js/all.js"></script>
+    </body>
+  
 </html>
