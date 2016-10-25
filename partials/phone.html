@@ -1,0 +1,14 @@
+<div class="signupView myPhoneView grayView">
+    <div ng-show="step==1||step==3">
+        <div class="a">
+            <input type="tel" ng-model="phone" placeholder="输入手机号" maxlength="11" ng-readonly="step==3"/><button class="bg-orange" ng-class="{'bg-disable':sec>0}" ng-click="getCode()">{{sec>0?sec:"发送验证码"}}</button>
+        </div>
+        <input type="text" ng-model="code" placeholder="输入验证码" maxlength="4"/>
+        <div class="font-orange" style="height:20px;margin:-15px 0 15px 0;text-align:left;">{{sec>0?"已发送随机验证码到您手机，请注意查收！":""}}</div>
+        <button class="bg-orange btn" ng-click="bind()">{{step==1?"绑 定":"解 绑"}}</button>
+        <div ng-if="step==3" class="nophone">手机号没有了，请拨打菜籽客服电话 <span class="font-orange">021-58890800</span></div>
+    </div>
+    <div ng-show="step==2" class="msg font-green2">手机绑定成功</div>
+    <div ng-show="step==4" class="msg2 font-green2">手机解绑成功<br><span class="font-dark" ng-click="step=1">重新绑定</span></div>
+</div>
+<div ng-include src="'partials/menu2.html'" class="posTitle"></div>

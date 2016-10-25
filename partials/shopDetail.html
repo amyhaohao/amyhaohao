@@ -1,0 +1,33 @@
+<div class="shopView2">
+    <div class="c1 bg-white clearfix">
+        <div class="left"><img src="images/44.png" class="e4" /></div>
+        <div class="left">
+            <div class="font-black font-15">{{shop.name + shop.id}}</div>
+            <div class="stars"><i class="icon" ng-class="{'i-star':shop.star>=1,'i-half':shop.star>0&&shop.star<1}"></i><i class="icon" ng-class="{'i-star':shop.star>=2,'i-half':shop.star>1&&shop.star<2}"></i><i class="icon" ng-class="{'i-star':shop.star>=3,'i-half':shop.star>2&&shop.star<3}"></i><i class="icon" ng-class="{'i-star':shop.star>=4,'i-half':shop.star>3&&shop.star<4}"></i><i class="icon" ng-class="{'i-star':shop.star==5,'i-half':shop.star>4&&shop.star<5}"></i><span class="font-orange2 font-12">{{shop.star}}</span></div> 
+            <div class="font-dark font-12">营业时间&nbsp;{{shop.openingTime}}
+               <br>配送费 &yen; {{shop.deliveryFee}}&nbsp;&nbsp;&nbsp;&nbsp;{{shop.deliveryLimitFee}}元起送
+            </div>
+        </div>
+    </div>
+    <div class="c3 bg-white font-black">
+        <div class="addr">上海市浦建路</div>
+        <div><span class="font-dark">联系电话：</span>138123456789</div>
+    </div>
+    <div class="c4 bg-white">
+        <div class="font-black font-15 d1">评论</div>
+        <div class="comments">
+            <div class="comment fade" ng-repeat="c in [2,3,5,4]">
+                <div class="user">
+                    <span class="u ellipsis">用户{{$index+1}}</span>
+                    <span class="stars"><i class="icon" ng-class="{'i-star':c>0}"></i><i class="icon" ng-class="{'i-star':c>1}"></i><i class="icon" ng-class="{'i-star':c>2}"></i><i class="icon" ng-class="{'i-star':c>3}"></i><i class="icon" ng-class="{'i-star':c>4}"></i></span><br>
+                    <span class="date">2016-08-01</span>
+                </div>
+                <div class="desc">评论评论评论{{$index+1}}</div>
+                <div class="like">
+                    <span ng-repeat="p in [1,2,3]">商品{{p + ($last?'':'，')}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include src="'partials/menu2.html'" class="topTitle2"></div>

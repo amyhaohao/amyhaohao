@@ -1,0 +1,42 @@
+<div class="myOrdersView myOrderView font-dark">
+        <div class="head">
+            <div class="clearfix">
+                <div class="left">配送时间&nbsp;&nbsp;{{order.orderDate|date:"yyyy-MM-dd"}} 09:00 - 14:00</div>
+                <div class="right font-orange font-15">{{order.status.getOrderStatus()}}</div>
+            </div>
+            <div>
+                               应付金额&nbsp;&nbsp;<span class="font-red font-18">&yen; {{order.payPrice.toFixed(2)}}</span><br>
+                                配送方式&nbsp;&nbsp;{{"".getDeliveryName()}}<br>
+                                支付方式&nbsp;&nbsp;{{"".getPaymentName()}}<br>
+            </div>
+        </div>
+        <div style="margin:10px 0;">
+            <div class="line"></div>
+            <div class="address bg-white">
+                <div class="font-black">收货人姓名<span style="margin-left:10px;">13812345678</span></div>
+                <div class="font-12">收货地址收货地址收货地址收货地址</div>
+            </div>
+            <div class="line"></div>
+        </div>
+        <div class="bg-white remark">备注信息备注信息备注信息</div>
+        <div class="item bg-white">
+            <div class="no font-gray">订单号 &nbsp;{{order.orderNo}}<span class="right">{{order.orderDate|date:'yyyy-MM-dd HH:mm'}}</span></div>
+            <a class="shop font-green2" href="#!/shop/detail/{{order.shopId}}" style="display:block;">{{order.shopName}}</a>
+            <div class="products">
+                <div class="prod clearfix" ng-repeat="p in order.items">
+                    <div class="left ellipsis">{{p.productName}}</div>
+                    <div class="font-black font-12 right">&yen; {{p.salesPrice}} <span class="font-gray font-11">x{{p.orderQty}}</span></div>
+                </div>
+            </div>
+            <div class="total font-12 clearfix">
+                共{{order.items.length}}件
+                <div class="right">
+                                                   订单总金额： <span>&yen; {{order.totalPrice.toFixed(2)}}</span><br>
+                                                    运费：<span>&yen; 0.00</span><br>
+                                                    优惠金额：<span>&yen; -0.00</span><br>
+                                                    应付金额：<span class="font-red">&yen; {{order.payPrice.toFixed(2)}}</span>
+                </div>
+            </div>
+        </div>
+</div>
+<div ng-include src="'partials/menu2.html'" class="topTitle2"></div>

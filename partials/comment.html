@@ -1,0 +1,28 @@
+<div class="commentView font-dark">
+    <div class="shop bg-white">
+        <a class="font-15 font-black">{{order.shopName}}</a>
+        <a class="font-dark">上海市浦建路145号</a>
+        <a class="pic"><img src="images/44.png" /></a>
+    </div>
+    <div class="c1 bg-white">
+            <span>评分</span> 
+            <span class="stars"><i class="icon i-star" ng-click="star=1"></i><i class="icon" ng-class="{'i-star':star>1}" ng-click="star=2"></i><i class="icon" ng-class="{'i-star':star>2}" ng-click="star=3"></i><i class="icon" ng-class="{'i-star':star>3}" ng-click="star=4"></i><i class="icon" ng-class="{'i-star':star==5}" ng-click="star=5"></i></span>
+            <span class="font-gray">{{star}}分</span>
+    </div>
+    <div class="tit">商品评论</div>
+    <div class="bg-white">
+        <textarea placeholder="说点什么..." maxlength="100" ng-model="comment" class="font-12"></textarea>
+    </div>
+    <div class="tit">点赞</div>
+    <div class="c3 bg-white">
+        <div>
+            <div ng-repeat="p in order.items" class="p">
+                <div class="ellipsis font-black font-15">{{p.productName}}</div>
+                <div class="font-gray font-12">&yen; {{p.salesPrice}}</div>
+                <div class="z" ng-class="{zan:zan}" ng-click="zan=(zan?false:true)">{{zan?"+1":"赞"}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="btn bg-orange2 font-17" ng-click="submit()">提交评论</div>
+</div>
+<div ng-include src="'partials/menu2.html'" class="topTitle2 posTitle"></div>

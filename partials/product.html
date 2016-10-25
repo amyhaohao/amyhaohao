@@ -1,0 +1,30 @@
+<div class="productView font-dark">
+    <img class="pImg" src="images/44.png"/>
+    <div class="bg-white con1">
+        <div class="font-black font-15" style="margin-bottom:3px;">{{product.name}}</div>
+        <div><span class="font-red font-15">&yen; {{product.unitPrice.toFixed(1)}}</span></div>
+        <span class="btn bg-orange font-17" ng-click="cartSvc.add(product,$event,shop)">加入购物车</span>
+        <span class="share" ng-click="showShare=true"></span>
+    </div>
+    <div class="bg-white" style="margin-top:10px;" ng-show="product.params||product.desc||images.length>0">
+        <div class="params clearfix font-15" ng-show="product.params">
+            <div class="left" ng-repeat="(k,v) in product.params">{{k}}：{{v}}</div>
+        </div>
+        <div class="desc" ng-show="product.desc" style="{{product.desc&&params.length>0?'margin-top:-15px;':''}}">{{product.desc}}</div>
+        <div ng-repeat="i in images">
+            <img class="img" ng-show="i.imagePath" ng-src="{{i.imagePath}}" />
+            <div class="desc" ng-show="i.description">{{i.description}}</div>
+        </div>
+    </div>
+    <span class="icon back" ng-click="back()"></span>
+    <div class="mask" ng-class="{maskShow:showShare}">
+        <div class="shares">
+            <div class="font-12">
+                <span>微信好友</span>
+                <span class="i2">微信朋友圈</span>
+                <span class="i3">新浪微博</span>
+            </div>
+            <div class="bg-white font-15" ng-click="showShare=false">取消</div>
+        </div>
+    </div>
+</div>

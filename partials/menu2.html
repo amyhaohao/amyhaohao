@@ -1,0 +1,9 @@
+<div class="topTitle" ng-controller="TopTitleCtrl">
+    <i class="icon icon1" ng-click="$root.showSideBar=true"></i>
+    <span class="icon icon2" ng-click="back()"></span>
+    <div class="title ellipsis">{{title}}</div>
+    <a href="#!/my/address/0" class="b add" ng-if="action=='add'"></a>
+    <span class="save font-orange b" ng-if="action=='save'" ng-click="save()">保存</span>
+    <span class="b edit font-green2" ng-if="action=='edit'" ng-click="edit()">编辑</span>
+    <a class="b icon-shop" href="#!{{titleLink}}" ng-if="action=='shop'"></a>
+</div>

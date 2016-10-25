@@ -1,0 +1,21 @@
+<div class="addressView2 font-black font-15">
+   <div class="bg-white">
+       <div class="line">
+           <input type="text" ng-model="address.contactName" class="name" placeholder="收货人姓名" maxlength="18"/>
+           <div class="right x" ng-click="address.contactName=''"></div>
+       </div>
+       <div class="line">
+           <input type="text" ng-model="address.address" class="address" placeholder="详细地址" maxlength="30"/><br>
+           <span class="font-orange font-10">*建议您填写详细地址，如街道名称，门牌号，楼层及房间号</span>
+           <div class="right x" ng-click="address.address=''"></div>
+       </div>
+       <div class="line">
+           <input type="tel" ng-model="address.phone" class="phone" placeholder="联系电话" maxlength="20"/><br>
+           <span class="font-orange font-10">*请填写真实电话号码，方便店铺联系确认</span>
+           <div class="right x" ng-click="address.phone=''"></div>
+       </div>       
+       <div class="line font-gray">设为默认<span class="round2 right" ng-class="{round2Selected:address.defaultSet}"><i></i></span></div>
+   </div>
+   <div class="save btn bg-orange" ng-click="save()">保 存</div>
+</div>
+<div ng-include src="'partials/menu2.html'" class="topTitle2 posTitle"></div>
