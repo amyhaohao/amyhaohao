@@ -1,0 +1,10 @@
+[{"imgUrl":"", "name":"店铺名称", "star":4, "totalSaleAmount":100, "deliveryLimitFee":30, "deliveryFee":5, "openingTime":"9:00-22:00", "distance":"100m"},
+ {"imgUrl":"", "name":"店铺名称", "star":3, "totalSaleAmount":344, "deliveryLimitFee":20, "deliveryFee":0, "openingTime":"11:00-20:00", "distance":"1000m"},
+ {"imgUrl":"", "name":"店铺名称", "star":5, "totalSaleAmount":564, "deliveryLimitFee":0, "deliveryFee":15, "openingTime":"9:30-22:30", "distance":"300m"},
+ {"imgUrl":"", "name":"店铺名称", "star":3.5, "totalSaleAmount":34, "deliveryLimitFee":30, "deliveryFee":10, "openingTime":"10:00-18:00", "distance":"500m"},
+ {"imgUrl":"", "name":"店铺名称", "star":4.5, "totalSaleAmount":657, "deliveryLimitFee":25, "deliveryFee":20, "openingTime":"9:30-17:00", "distance":"600m"},
+ {"imgUrl":"", "name":"店铺名称", "star":2, "totalSaleAmount":56546, "deliveryLimitFee":5, "deliveryFee":0, "openingTime":"9:00-22:00", "distance":"700m"},
+ {"imgUrl":"", "name":"店铺名称", "star":1, "totalSaleAmount":45, "deliveryLimitFee":0, "deliveryFee":5, "openingTime":"11:00-13:00", "distance":"100m"},
+ {"imgUrl":"", "name":"店铺名称", "star":2.5, "totalSaleAmount":375, "deliveryLimitFee":30, "deliveryFee":10, "openingTime":"10:00-20:30", "distance":"150m"},
+ {"imgUrl":"", "name":"店铺名称", "star":4.5, "totalSaleAmount":65765, "deliveryLimitFee":15, "deliveryFee":0, "openingTime":"9:00-21:00", "distance":"180m"},
+ {"imgUrl":"", "name":"店铺名称", "star":5, "totalSaleAmount":547, "deliveryLimitFee":10, "deliveryFee":5, "openingTime":"9:00-22:00", "distance":"800m"}]
