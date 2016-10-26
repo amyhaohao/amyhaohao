@@ -73,7 +73,10 @@
     <script src="js/libs/angular.min.js"></script>
     <script src="js/libs/angular-route.min.js"></script>
     <script src="js/libs/angular-resource.min.js"></script>
-    <script src="https://api.map.baidu.com/api?v=2.0&ak=UMgv3OC6YsXrEwSFV0YBGGiO"></script>
+    <script>
+        window.BMap_loadScriptTime = (new Date).getTime();
+    </script>
+    <script src="https://api.map.baidu.com/getscript?v=2.0&ak=UMgv3OC6YsXrEwSFV0YBGGiO&services=&t=20161025142414"></script>
 <!--
     <script src="js/app.js?20150716"></script>
     <script src="js/services.js?20150716"></script>
