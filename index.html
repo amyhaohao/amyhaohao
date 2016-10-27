@@ -19,11 +19,11 @@
             <div class="mask sideBarMask" ng-click="showSideBar=false"></div>
             <div class="sideBar" ng-controller="SideBarCtrl" ng-click="$parent.showSideBar=false">
                 <div class="user">
-                    <div class="u1" ng-if="$parent.user==undefined||$parent.user==null">
+                    <div class="u1" ng-if="!$parent.user">
                         <div>您还未登录</div>
                         <div class="btn font-green"><a href="#!/signin" class="font-green">登录  / 注册</a></div>
                     </div>
-                    <div class="u2" ng-if="$parent.user != undefined && $parent.user!=null">
+                    <div class="u2" ng-if="$parent.user">
                         <a href=""><img src="images/29.png" /></a>
                         <a href="">{{$parent.user.name}}</a>
                         <span class="font-green" ng-click="logout()" ng-hide="wx">退出</span>
@@ -73,15 +73,18 @@
     <script src="js/libs/angular.min.js"></script>
     <script src="js/libs/angular-route.min.js"></script>
     <script src="js/libs/angular-resource.min.js"></script>
+<!--    <script src="https://api.map.baidu.com/api?v=2.0&ak=UMgv3OC6YsXrEwSFV0YBGGiO"></script>-->
+<!--
     <script>
         window.BMap_loadScriptTime = (new Date).getTime();
     </script>
     <script src="https://api.map.baidu.com/getscript?v=2.0&ak=UMgv3OC6YsXrEwSFV0YBGGiO&services=&t=20161025142414"></script>
+-->
 <!--
-    <script src="js/app.js?20150716"></script>
-    <script src="js/services.js?20150716"></script>
-    <script src="js/controllers.js?20150716"></script>
-    <script src="js/util.js?20150716"></script>
+    <script src="js/app.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/util.js"></script>
 -->
     
     <script src="js/all.js"></script>
