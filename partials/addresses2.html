@@ -1,14 +1,16 @@
 <div class="addressView3">
-    <div class="input font-dark font-15" ng-show="back=='/'"><input type="text" ng-model="address"/><div ng-click="confirm()">确定</div></div>
+    <div class="input font-dark font-15" ng-show="!from"><input type="text" ng-model="address"/><div ng-click="confirm()">确定</div></div>
     <div class="bg-white geo font-orange font-15" ng-click="autoGeo()"><i class="icon icon1"></i><span>定位到当前地址</span></div>
-    <a class="bg-white font-dark font-15 add" href="{{back=='/'?'#!/my/address/0?from=home':'#!/my/address/0?from=order'}}"><i class="icon icon2"></i>新建地址<i class="icon i-arrow"></i></a>
-    <div class="history font-15" ng-if="addresses.length>0">历史地址</div>
-    <div class="item bg-white font-12 fade" ng-repeat="a in addresses" ng-class="{current:geo.id==a.id}">
-        <div class="name font-dark">{{a.contactName}} <span class="font-orange" ng-if="a.defaultSet">（默认）</span></div>
-        <div>{{a.address}}</div>
-        <div>{{a.phone}}</div>
-        <i class="icon"></i>
-        <span class="btn font-dark font-15" ng-click="setGeo(a)">选择</span>
+    <div ng-if="$root.user">
+        <a class="bg-white font-dark font-15 add" href="{{!from?'#!/my/address/0?from=home':'#!/my/address/0?from=order'}}"><i class="icon icon2"></i>新建地址<i class="icon i-arrow"></i></a>
+        <div class="history font-15" ng-if="addresses.length>0">历史地址</div>
+        <div class="item bg-white font-12 fade" ng-repeat="a in addresses" ng-class="{current:geo.id==a.id}">
+            <div class="name font-dark">{{a.contactName}} <span class="font-orange" ng-if="a.defaultSet">（默认）</span></div>
+            <div>{{a.address}}</div>
+            <div>{{a.phone}}</div>
+            <i class="icon"></i>
+            <span class="btn font-dark font-15" ng-click="setGeo(a)">选择</span>
+        </div>
     </div>
 </div>
 <div ng-include src="'partials/menu2.html'" class="topTitle2"></div>

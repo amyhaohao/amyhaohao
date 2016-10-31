@@ -19,14 +19,14 @@
             <div class="mask sideBarMask" ng-click="showSideBar=false"></div>
             <div class="sideBar" ng-controller="SideBarCtrl" ng-click="$parent.showSideBar=false">
                 <div class="user">
-                    <div class="u1" ng-if="!$parent.user">
+                    <div class="u1" ng-if="!user">
                         <div>您还未登录</div>
-                        <div class="btn font-green"><a href="#!/signin" class="font-green">登录  / 注册</a></div>
+                        <div class="btn font-green"><a href="" class="font-green" ng-click="$root.showSign=true;$root.signType=true;">登录  / 注册</a></div>
                     </div>
-                    <div class="u2" ng-if="$parent.user">
+                    <div class="u2" ng-if="user">
                         <a href=""><img src="images/29.png" /></a>
-                        <a href="">{{$parent.user.name}}</a>
-                        <span class="font-green" ng-click="logout()" ng-hide="wx">退出</span>
+                        <a href="">{{user.name}}</a>
+                        <span class="font-green" ng-click="logout()">退出</span>
                     </div>
                 </div>
                 <div class="menu">
@@ -65,7 +65,34 @@
                 </div>
             </div>
         </div>
+        <div class="signView" ng-class="{signViewShow: showSign}">
+            <div class="signupView" ng-controller="SigninCtrl" ng-show="signType">
+                <input type="text" ng-model="username" placeholder="请输入您的用户名" maxlength="25"/><br>
+                <input type="password" ng-model="password" placeholder="请输入您的密码" class="pass" maxlength="20"/><br>
+                <button class="bg-green btn" ng-class="{'bg-disable':!username||!password}" ng-click="signin()">登 录</button><br>
+                <a href="" ng-click="$root.signType=false" class="font-red" style="font-size:18px;">新用户注册</a>
+            </div>
+            <div class="signupView" ng-controller="SignupCtrl" ng-show="!signType">
+                <input type="text" ng-model="username" placeholder="请输入您的用户名" maxlength="25"/><br>
+                <input type="password" ng-model="password" placeholder="请输入您的密码" class="pass" maxlength="20"/><br>
+                <input type="password" ng-model="password2" placeholder="请确认您的密码" class="pass2" maxlength="20"/><br>
+                <button class="bg-green btn" ng-class="{'bg-disable':!username||!password||!password2}" ng-click="signup()">立即注册</button>
+                <a href="" ng-click="$root.signType=true" class="font-red" style="font-size:18px;">已有帐户登录</a>
+            </div>
+            <div class="posTitle">
+                <div class="topTitle">
+                    <a class="font-orange" ng-click="cancelSign()" href="">取消</a>
+                    <div class="title">{{signType?"用户登录":"新用户注册"}}</div>
+                </div>
+            </div>
+        </div>
         <div class="loading">
+            <div><span class="i1"></span>
+            <span class="i2"></span>
+            <span class="i3"></span>
+            <span class="i4"></span>
+            <span class="i5"></span>
+            <span></span></div>
                 <noscript><br/>请打开JavaScript功能</noscript>
         </div> 
         <div class="alertPop"></div>

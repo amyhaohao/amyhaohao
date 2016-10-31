@@ -78,8 +78,28 @@ body .font-18{font-size:18px;}
 .empty{text-align:center;line-height:24px;}
 .empty .btn{width:225px;line-height:43px;margin-top:30px;}
 
-.loading{position:fixed;width:100%;height:100%;background:url(../images/41.gif) no-repeat center center;background-size:62px 62px;top:0;left:0;z-index:10;transition: all 0.3s;opacity: 1;visibility: visible;}
+
+
+.loading {position:fixed;width:100%;height:100%;top:0;left:0;z-index:10;transition: opacity 0.3s;opacity: 1;visibility: visible;background:rgba(255,255,255,0.6);}
+.loading div{position: absolute;width:100%;top:50%;margin-top:-8px;text-align: center;}
+.loading span {display:inline-block;width: 16px;height: 16px;background-color: #74BA1C;border-radius: 100%;animation: sk-bouncedelay 1.7s infinite ease-in-out;-webkit-animation: sk-bouncedelay 1.7s infinite ease-in-out;margin:0 3px;box-shadow: 1px 1px 2px rgba(0,0,0,0.3)}
+.loading .i1 {animation-delay: -0.84s;-webkit-animation-delay: -0.84s;}
+.loading .i2 {animation-delay: -0.68s;-webkit-animation-delay: -0.68s;}
+.loading .i3 {animation-delay: -0.52s;-webkit-animation-delay: -0.52s;}
+.loading .i4 {animation-delay: -0.36s;-webkit-animation-delay: -0.36s;}
+.loading .i5 {animation-delay: -0.20s;-webkit-animation-delay: -0.20s;}
+@keyframes sk-bouncedelay {
+	0%, 80%, 100% {transform: scale(0);-webkit-transform: scale(0);opacity: 0;}
+	40% {transform: scale(1);-webkit-transform: scale(1);opacity: 1;}
+}
+@-webkit-keyframes sk-bouncedelay {
+	0%, 80%, 100% {transform: scale(0);-webkit-transform: scale(0);opacity: 0;}
+	40% {transform: scale(1);-webkit-transform: scale(1);opacity: 1;}
+}
+
+.ie9 .loading{background:url(../images/41.gif) no-repeat center center;}
 .loadingHide{opacity: 0;visibility: hidden;}
+.loadingHide span{animation:none;}
 .loading2{position:fixed;width:100%;height:100%;top:0;left:0;z-index:10;display:none;}
 .loading2 div{position:absolute;width:60px;height:60px;left:50%;top:50%;margin:-50px 0 0 -30px;background:url(../images/58.gif) no-repeat center center rgba(0,0,0,1);background-size:24px 24px;border-radius:8px;opacity:0.4}
 .alertPop{position:fixed;width:200px;left:50%;margin-left:-100px;top:200px;background:rgba(0,0,0,0.6);color:#fff;text-align:center;border-radius:5px;padding:10px;display:none;}
@@ -252,6 +272,10 @@ body .font-18{font-size:18px;}
 .productView .maskShow .shares{-webkit-transform: translateY(0);
     -moz-transform: translate(0);
     transform: translate(0);}
+
+.signView {position: fixed;width:100%;height:100%;background:#eee;left:0;top:0;z-index:10;padding-top:43px;visibility: hidden;transform:translateY(100%);-webkit-transform:translateY(100%);transition:all 0.6s ease;box-shadow: 0 0 8px rgba(0,0,0,0.5)}
+.signViewShow{transform:translateY(0);-webkit-transform:translateY(0);visibility: visible;}
+.signView .topTitle a{position:absolute;left:15px;top:0px;font-size:14px;}
 .signupView{padding:25px 15px;text-align:center;}
 .signupView input{display:inline-block;height:48px;border-radius:5px;background:#fff;border:1px solid #cccccc;width:100%;margin-bottom:20px;padding:0 15px;background:#fff;font-size:15px;}
 .signupView button{font-size:17px;width:100%;margin-bottom:20px;border:none;height:45px;line-height:45px;}
@@ -270,7 +294,7 @@ body .font-18{font-size:18px;}
 .addressView2 .line{border-bottom:1px solid #ccc;height:55px;padding:15px 15px 0;position:relative;}
 .addressView2 .line input{display:inline-block;width:84%;height:26px;border:none;}
 .addressView2 .line .font-orange{top:-9px;position:relative;}
-.addressView2 .x{position:absolute;right:15px;top:12px;width:30px;height:30px;background:url(../images/59.png?20150814) no-repeat 100% center;background-size:15px 15px;}
+.addressView2 .x{position:absolute;right:0;top:12px;width:45px;height:30px;background:url(../images/59.png?20150814) no-repeat 15px center;background-size:15px 15px;}
 .addressView2 .round2{text-align:left;}
 .addressView2 .btn {height:46px;line-height:46px;font-size:20px;margin:15px 15px;font-size:17px;display:block;}
 .addressView3 .input{padding:12px 58px 12px 15px;position:relative;border-bottom:1px solid #ccc;}
@@ -298,8 +322,9 @@ body .font-18{font-size:18px;}
 .orderView .remark{border:none;width:100%;font-size:15px;height:20px;}
 .orderView .i-round{margin:-2px 8px 0 25px;}
 .orderView .title{padding:0 0 2px 15px;font-size:15px;}
-.orderView .cartItem{margin-bottom:4px;}
+.orderView .cartItem{margin-bottom:4px;line-height:30px;}
 .orderView .cartItem .left{max-width:220px;}
+.orderView .cartItem .left img{width:30px;margin-right:3px;}
 .orderView .cartDetail .sub{text-align:right;border-top:1px solid #ccc;margin:8px -15px 0;padding:5px 15px 0;}
 .orderView .amount{text-align:right;line-height:26px;padding-right:15px;}
 .orderView .amount span{display:inline-block;min-width:60px;}
@@ -338,9 +363,10 @@ body .font-18{font-size:18px;}
 .myOrdersView .item{padding:10px 15px 5px;margin-bottom:12px;background:#fff;}
 .myOrdersView .item .no{font-size:12px;margin-bottom:8px;}
 .myOrdersView .item .shop{font-size:15px;height:25px;padding-left:20px;background:url(../images/56.png?20150814) no-repeat 0 4px;background-size:14px 14px;}
-.myOrdersView .products{max-height:81px;overflow:hidden;border-top:1px solid #ccc;padding:3px 0;}
-.myOrdersView .prod{line-height:25px;}
+.myOrdersView .products{border-top:1px solid #ccc;padding:3px 0;}
+.myOrdersView .prod{line-height:35px;}
 .myOrdersView .prod .left{width:80%;}
+.myOrdersView .prod img{width:30px;margin-right:5px;vertical-align: middle;}
 .myOrdersView .total{border-top:1px solid #ccc;line-height:34px;margin:5px 0 2px;}
 .myOrdersView .btns{text-align:right;}
 .myOrdersView .btns .btn{padding:2px 6px;border:1px solid #666;font-size:15px;margin:0 0 10px 6px;}
@@ -365,8 +391,8 @@ body .font-18{font-size:18px;}
 .myPhoneView .a button{width:29%;border-radius:0 5px 5px 0;font-size:15px;height:48px;}
 .myPhoneView .a .bg-disable{font-size:16px;}
 .myPhoneView .nophone{margin-top:10px;font-size:12px;}
-.myPhoneView .msg{padding-top:130px;background:url(../images/2.png?20150814) no-repeat center 55px;background-size:39px 60px;}
-.myPhoneView .msg2{padding-top:130px;background:url(../images/5.png?20150814) no-repeat center 80px;background-size:21px 17px;}
+.myPhoneView .msg{padding-top:130px;background:url(../images/2.png) no-repeat center 55px;background-size:39px 60px;font-size:18px;}
+.myPhoneView .msg2{padding-top:130px;background:url(../images/5.png) no-repeat center 80px;background-size:21px 17px;font-size:18px;}
 .myPhoneView .msg2 span{padding:6px 8px;background:#fff;display:inline-block;border:1px solid #ccc;border-radius:5px;margin-top:30px;}
 
 .comments .comment{border-bottom:1px solid #ccc;padding:12px 0;}

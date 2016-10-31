@@ -24,7 +24,7 @@
             <a class="shop font-green2" href="#!/shop/detail/{{order.shopId}}" style="display:block;">{{order.shopName}}</a>
             <div class="products">
                 <div class="prod clearfix" ng-repeat="p in order.items">
-                    <div class="left ellipsis">{{p.productName}}</div>
+                    <div class="left"><img src="images/44.png" />{{p.productName}}</div>
                     <div class="font-black font-12 right">&yen; {{p.salesPrice}} <span class="font-gray font-11">x{{p.orderQty}}</span></div>
                 </div>
             </div>

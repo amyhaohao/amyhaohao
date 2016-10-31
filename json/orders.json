@@ -1,4 +1,3 @@
-
 [{"id":1, "shopName":"店铺名称1", "status":"AWAIT_PAY", "orderNo":"234324324234", "orderDate":"1470027528512", "totalPrice":99.9, "payPrice":99.9,
   "items":[{"productName":"商品名称1", "salesPrice":4.5, "orderQty":1},
            {"productName":"商品名称2", "salesPrice":23, "orderQty":2},
@@ -19,7 +18,7 @@
            {"productName":"商品名称2", "salesPrice":23, "orderQty":2},
            {"productName":"商品名称3", "salesPrice":8.9, "orderQty":3}]
  },
- {"id":5, "shopName":"店铺名称5", "status":"COMMENTED", "orderNo":"234324675755", "orderDate":"1470027528512", "totalPrice":99.9, "payPrice":99.9,
+ {"id":5, "shopName":"店铺名称5", "status":"DONE", "orderNo":"234324675755", "orderDate":"1470027528512", "totalPrice":99.9, "payPrice":99.9,
   "items":[{"productName":"商品名称1", "salesPrice":4.5, "orderQty":1},
            {"productName":"商品名称2", "salesPrice":23, "orderQty":2},
            {"productName":"商品名称3", "salesPrice":8.9, "orderQty":3}]
