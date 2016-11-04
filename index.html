@@ -2,7 +2,7 @@
 <html lang="en" ng-app="o2oApp">
     <head>
         <title>菜籽</title>     
-<!--        <link rel="shortcut icon" href="images/44.png" type="image/png" />        -->
+        <link rel="shortcut icon" href="images/44.png" type="image/png" />        
         <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
         <meta http-equiv="pragma" content="no-cache" />
         <meta http-equiv="cache-control" content="no-cache" />
@@ -24,43 +24,42 @@
                         <div class="btn font-green"><a href="" class="font-green" ng-click="$root.showSign=true;$root.signType=true;">登录  / 注册</a></div>
                     </div>
                     <div class="u2" ng-if="user">
-                        <a href=""><img src="images/29.png" /></a>
+                        <i class="icon"></i>
                         <a href="">{{user.name}}</a>
                         <span class="font-green" ng-click="logout()">退出</span>
                     </div>
                 </div>
                 <div class="menu">
-                    <a href="#!/" class="a1">首页</a>
-                    <a href="#!/my/orders" class="a2">我的订单</a>
-                    <a href="#!/my/addresses" class="a4">地址管理</a>
-                    <a href="#!/my/phone" class="a5">绑定手机</a>
-                    <a href="#!/about" class="a6">关于</a> 
+                    <a href="#!/"><i class="icn a1"></i>首页</a>
+                    <a href="#!/my/orders"><i class="icn a2"></i>我的订单</a>
+                    <a href="#!/my/addresses"><i class="icn a3"></i>地址管理</a>
+                    <a href="#!/my/phone"><i class="icn a4"></i>绑定手机</a>
+                    <a href="#!/about"><i class="icn a5"></i>关于</a> 
                 </div>
             </div> 
         </div>
         <div ng-controller="CartCtrl">
-            <a class="cartIcon" ng-class="{cartIconShow:cartShopId!=-1}" ng-click="$root.showCartDetail=true;editCart=false;checkall=false;cartSvc.checkAll(false)"><span class="bg-orange" ng-show="cart.count>0">{{cart.count}}</span></a>
-            <div class="carts" ng-class="{cartShow:showCartDetail, cartEdit:editCart, cartEmpty:cart.count<=0}">
+            <a id="cartIcon" class="icn" ng-class="{cartIconShow:cartShopId!=-1}" ng-click="$root.showCartDetail=true;checkall=false;cartSvc.checkAll(false)"><span class="bg-orange" ng-show="cart.count>0">{{cart.count}}</span></a>
+            <div class="carts" ng-class="{cartShow:showCartDetail, cartEmpty:cart.count<=0}">
                 <div class="cartDetail">
-                    <div class="shopname font-dark">{{cart.shop.name+cart.shop.id}}</div>
+                    <div class="shopname font-dark"><i class="icn i-shop"></i>{{cart.shop.name+cart.shop.id}}</div>
                     <div class="bg-white">
-                        <div class="cartItem" ng-repeat="c in cart.items">
-                            <span class="icon i-round" ng-class="{roundSelected:c.check}" ng-click="c.check=!c.check"></span><img src="images/44.png" />
-                            <div class="ellipsis font-black font-15">{{c.name+c.id}}</div>
+                        <div class="cartItem" ng-repeat="c in cart.items" ng-move="move($event)">
+                            <span class="icn i-round" ng-class="{roundSelected:c.check}" ng-click="c.check=!c.check"></span><img src="images/44.png" />
+                            <div class="font-black font-15">{{c.name+c.id}}</div>
                             <div class="price font-dark font-12"><span class="font-red font-18">{{c.price.toFixed(1)}}</span> 元</div>
-                            <span class="num font-12">x{{c.quantity}}</span>
                             <span class="quantity"><span ng-click="c.quantity>1?cartSvc.del(c):delCartItem($event, $index);"></span><span class="input" ng-scroll="c.quantity"></span><span ng-click="cartSvc.add(c)"></span></span>
                             <div class="del bg-red" ng-click="delCartItem($event, $index)">删除</div>
                         </div>
                     </div>
-                    <div class="empty">购物车空空哒<br>去挑选爱吃的菜菜吧~<br><a href="#!/" class="btn">去逛逛</a></div>
+                    <div class="empty"><i class="icon"></i><br>购物车空空哒<br>去挑选爱吃的菜菜吧~<br><a href="#!/" class="btn">去逛逛</a></div>
                     <div style="height:49px;"></div>
                 </div>
-                <div class="cartTitle font-dark bg-white font-17">购物车<span class="font-orange" ng-click="$root.showCartDetail=false">关闭</span><span class="font-orange s" ng-click="editCart=!editCart">{{editCart?"完成":"编辑"}}</span></div>
+                <div class="cartTitle font-dark bg-white font-17">购物车<span class="font-orange" ng-click="$root.showCartDetail=false">关闭</span></div>
                 <div class="cartAmount font-12 bg-white">
-                    <div class="font-15" ng-click="checkall=!checkall;cartSvc.checkAll(checkall)"><span class="icon i-round" ng-class="{roundSelected:checkall}"></span>全选</div>
+                    <div class="font-15" ng-click="checkall=!checkall;cartSvc.checkAll(checkall)"><span class="icn i-round" ng-class="{roundSelected:checkall}"></span>全选</div>
                     <div class="r">合计:<span class="font-red font-15">&yen;{{cartSvc.getAmount().toFixed(2)}}</span>不含运费
-                        <span class="bg-red btn font-15" ng-class="{'bg-disable':cartDisabled||cartSvc.getCount()<=0}" ng-click="commit()">去结算</span>
+                        <button class="bg-red btn font-15" ng-disabled="cartSvc.getCount()<=0" ng-click="commit()">去结算</button>
                     </div>
                 </div>
             </div>
@@ -69,14 +68,14 @@
             <div class="signupView" ng-controller="SigninCtrl" ng-show="signType">
                 <input type="text" ng-model="username" placeholder="请输入您的用户名" maxlength="25"/><br>
                 <input type="password" ng-model="password" placeholder="请输入您的密码" class="pass" maxlength="20"/><br>
-                <button class="bg-green btn" ng-class="{'bg-disable':!username||!password}" ng-click="signin()">登 录</button><br>
+                <button class="bg-green btn" ng-disabled="!username||!password" ng-click="signin()">登 录</button><br>
                 <a href="" ng-click="$root.signType=false" class="font-red" style="font-size:18px;">新用户注册</a>
             </div>
             <div class="signupView" ng-controller="SignupCtrl" ng-show="!signType">
                 <input type="text" ng-model="username" placeholder="请输入您的用户名" maxlength="25"/><br>
                 <input type="password" ng-model="password" placeholder="请输入您的密码" class="pass" maxlength="20"/><br>
                 <input type="password" ng-model="password2" placeholder="请确认您的密码" class="pass2" maxlength="20"/><br>
-                <button class="bg-green btn" ng-class="{'bg-disable':!username||!password||!password2}" ng-click="signup()">立即注册</button>
+                <button class="bg-green btn" ng-disabled="!username||!password||!password2" ng-click="signup()">立即注册</button>
                 <a href="" ng-click="$root.signType=true" class="font-red" style="font-size:18px;">已有帐户登录</a>
             </div>
             <div class="posTitle">

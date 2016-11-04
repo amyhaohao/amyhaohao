@@ -5,12 +5,12 @@
         <span class="font-black" style="margin-left:20px;">{{geo.phone}}</span><br>
         <span class="font-12">{{geo.address}}</span>
         <span class="font-gray font-12" ng-if="!geo" style="position:relative;top:-10px;">您还没有填写收货人信息，立即去填写。</span>
-        <span class="icon i-arrow"></span>
+        <span class="icn i-arrow"></span>
     </a>
     <div class="line" style="margin-bottom:10px;"></div>
     <div class="bg-white"><textarea type="text" class="remark" placeholder="给店家留言" ng-model="$parent.orderRemark" maxlength="40" ng-focus="focus()" ng-blur="blur()"></textarea></div>
-    <div class="bg-white font-15">配送方式<span ng-click="delivery='HOME_DELIVERY'"><i class="icon i-round" ng-class="{roundSelected:delivery=='HOME_DELIVERY'}"></i>送货上门</span><span ng-click="delivery='ONESELF'"><i class="icon i-round" ng-class="{roundSelected:delivery=='ONESELF'}"></i>自提</span></div>
-    <div class="bg-white font-15">支付方式<span ng-click="payment='ONLINE'"><i class="icon i-round" ng-class="{roundSelected:payment=='ONLINE'}"></i>在线支付</span><span ng-click="payment='COD'"><i class="icon i-round" ng-class="{roundSelected:payment=='COD'}"></i>货到付款</span></div>
+    <div class="bg-white font-15">配送方式<span ng-click="delivery='HOME_DELIVERY'"><i class="icn i-round" ng-class="{roundSelected:delivery=='HOME_DELIVERY'}"></i>送货上门</span><span ng-click="delivery='ONESELF'"><i class="icn i-round" ng-class="{roundSelected:delivery=='ONESELF'}"></i>自提</span></div>
+    <div class="bg-white font-15">支付方式<span ng-click="payment='ONLINE'"><i class="icn i-round" ng-class="{roundSelected:payment=='ONLINE'}"></i>在线支付</span><span ng-click="payment='COD'"><i class="icn i-round" ng-class="{roundSelected:payment=='COD'}"></i>货到付款</span></div>
     <div class="title">订单明细</div>
     <div class="cartDetail bg-white">
         <div ng-repeat="c in cart.items|filter:{check:true}" class="cartItem clearfix">

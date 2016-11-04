@@ -1,12 +1,9 @@
 <div class="addressView bg-white font-dark">
-    <div class="empty font-gray" ng-if="addresses.length==0">您还没有收货地址<br>赶快去填写一个吧~<br>
-        <a href="#!/my/address/0" class="btn font-orange bg-white">新建收货地址</a>
-    </div>
     <div class="item fade" ng-repeat="a in addresses" ng-class="{default:a.defaultSet}">
         <div class="scroll" ng-click="edit(a.id)">
             <span class="font-black">{{a.contactName}}<span class="phone" style="margin-left:20px;">{{a.phone}}</span></span><br>
             <span class="font-12">{{a.address}}</span>
-            <span class="icon i-arrow"></span>
+            <span class="icn i-arrow"></span>
             <span class="del" ng-click="del($event, a.id, $index)">删除</span>
         </div>
     </div>

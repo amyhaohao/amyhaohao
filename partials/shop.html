@@ -7,15 +7,15 @@
                 <div class="name ellipsis">{{p.name+p.id}}</div>
                 <div class="price font-dark"><span class="font-red">{{p.unitPrice.toFixed(1)}}</span> 元</div>
                 <div class="zan" ng-if="p.likeCount>0">{{p.likeCount}}</div>
-                <div class="btn" ng-show="!p.cart || p.cart.quantity<=0" ng-click="cartSvc.add(p,$event, shop);test($event)"></div>
+                <div class="icon" ng-show="!p.cart || p.cart.quantity<=0" ng-click="cartSvc.add(p,$event, shop);test($event)"></div>
                 <div class="q" ng-class="{show:p.cart.quantity > 0}">
-                    <div class="quantity"><span ng-click="cartSvc.del(p.cart, $event)"></span><span class="input" ng-scroll="p.cart.quantity"></span><span ng-click="cartSvc.add(p.cart,$event)"></span></div>
+                    <div class="quantity"><span ng-click="cartSvc.del(p.cart, $event)"></span><span class="input" ng-scroll="p.cart.quantity"></span><span ng-click="cartSvc.add(p.cart,$event);test($event)"></span></div>
                 </div>
             </div>
         </div>
     </div>
     <div class="cats font-dark">
-        <a class="info font-dark" href="#!/shop/detail/{{shop.id}}">店铺信息</a>
+        <a class="info font-dark" href="#!/shop/detail/{{shop.id}}"><i class="icn"></i><br>店铺信息</a>
         <div ng-class="{current:currentCat==$index}" ng-click="scrollTo($index)" ng-repeat="cat in shop.categorys" >{{cat.name+$index}}</div>
     </div>
     <img id="testImg"/>

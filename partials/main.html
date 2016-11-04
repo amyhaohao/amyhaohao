@@ -3,30 +3,34 @@
                     <div class="item" ng-repeat="d in data">
                         <a class="pic" href="#!/shop/{{$index+1}}/0"><img src="images/44.png" /></a>
                         <a class="name ellipsis font-black font-15" href="#!/shop/{{$index+1}}/0">{{d.name+($index+1)}}</a>
-                        <a class="stars" href="#!/shop/{{$index+1}}/0"><i class="icon" ng-class="{'i-star':d.star>=1,'i-half':d.star>0&&d.star<1}"></i><i class="icon" ng-class="{'i-star':d.star>=2,'i-half':d.star>1&&d.star<2}"></i><i class="icon" ng-class="{'i-star':d.star>=3,'i-half':d.star>2&&d.star<3}"></i><i class="icon" ng-class="{'i-star':d.star>=4,'i-half':d.star>3&&d.star<4}"></i><i class="icon" ng-class="{'i-star':d.star==5,'i-half':d.star>4&&d.star<5}"></i><span class="font-orange2 font-12">{{d.star}}</span></a>
+                        <a class="stars" href="#!/shop/{{$index+1}}/0"><i class="icn" ng-class="{'i-star':d.star>=1,'i-half':d.star>0&&d.star<1}"></i><i class="icn" ng-class="{'i-star':d.star>=2,'i-half':d.star>1&&d.star<2}"></i><i class="icn" ng-class="{'i-star':d.star>=3,'i-half':d.star>2&&d.star<3}"></i><i class="icn" ng-class="{'i-star':d.star>=4,'i-half':d.star>3&&d.star<4}"></i><i class="icn" ng-class="{'i-star':d.star==5,'i-half':d.star>4&&d.star<5}"></i><span class="font-orange2 font-12">{{d.star}}</span></a>
                         <a class="desc font-gray font-12" href="#!/shop/{{$index+1}}/0">月售 {{d.totalSaleAmount}} 单 | {{d.deliveryLimitFee}}元起送 | 配送费 {{d.deliveryFee}} 元<br>
                                                                             配送时间 {{d.openingTime}}</a>
                         <div class="distant font-gray font-12">{{d.distance}}</div>
                     </div>
             </div>
     <div class="sorts font-dark">
-        <div class="sort" ng-click="showSub=(showSub==1?0:1)" ng-class="{current:showSub==1}">{{cat2.name}}<i class="icon"></i></div>
-        <div class="sort" ng-click="showSub=(showSub==2?0:2)" ng-class="{current:showSub==2}">{{sort2.name}}<i class="icon"></i></div>
-        <div class="sort" ng-click="showSub=(showSub==3?0:3)" ng-class="{current:showSub==3}" style="border-right:none;width:34%;">{{delivery2.name}}<i class="icon"></i></div>
-        <div class="line" style="left:{{(showSub-1)*33}}%;"></div>
+        <div class="sort" ng-click="showSub=(showSub==1?0:1)" ng-class="{current:showSub==1}">{{cat2.name}}<i class="icn"></i></div>
+        <div class="sort" ng-click="showSub=(showSub==2?0:2)" ng-class="{current:showSub==2}">{{sort2.name}}<i class="icn"></i></div>
+        <div class="sort" ng-click="showSub=(showSub==3?0:3)" ng-class="{current:showSub==3}" style="border-right:none;width:34%;">{{delivery2.name}}<i class="icn"></i></div>
+        <div class="line" ng-style="{left:(showSub-1)*33+'%'}"></div>
     </div>
     <div class="mask subs" ng-show="showSub > 0" ng-click="showSub=0">
                 <div class="sub" ng-class="{show:showSub==1}">
-                    <span ng-class="{current: cat2.id==0}" ng-click="changeSort(cat2,0,'全部分类')">全部分类&nbsp;&nbsp;<i class="icon"></i></span>
+                    <span ng-class="{current: cat2.id==0}" ng-click="changeSort(cat2,0,'全部分类')">全部分类&nbsp;&nbsp;<i class="icn"></i></span>
+                    <span ng-class="{current: cat2.id==1}" ng-click="changeSort(cat2,1,'蔬菜')">蔬菜&nbsp;&nbsp;<i class="icn"></i></span>
+                    <span ng-class="{current: cat2.id==2}" ng-click="changeSort(cat2,2,'水果')">水果&nbsp;&nbsp;<i class="icn"></i></span>
+                    <span ng-class="{current: cat2.id==3}" ng-click="changeSort(cat2,3,'生鲜')">生鲜&nbsp;&nbsp;<i class="icn"></i></span>
+                    <span ng-class="{current: cat2.id==4}" ng-click="changeSort(cat2,4,'肉类')">肉类&nbsp;&nbsp;<i class="icn"></i></span>
                 </div>
                 <div class="sub" ng-class="{show:showSub==2}">
-                    <span ng-class="{current: sort2.id=='DEFAULT'}" ng-click="changeSort(sort2,'DEFAULT','默认排序')">默认排序&nbsp;&nbsp;<i class="icon"></i></span>
-                    <span ng-class="{current: sort2.id=='BY_STAR'}" ng-click="changeSort(sort2,'BY_STAR','按评分排序')">按评分排序&nbsp;&nbsp;<i class="icon"></i></span>
+                    <span ng-class="{current: sort2.id=='DEFAULT'}" ng-click="changeSort(sort2,'DEFAULT','默认排序')">默认排序&nbsp;&nbsp;<i class="icn"></i></span>
+                    <span ng-class="{current: sort2.id=='BY_STAR'}" ng-click="changeSort(sort2,'BY_STAR','按评分排序')">按评分排序&nbsp;&nbsp;<i class="icn"></i></span>
                 </div>
                 <div class="sub" ng-class="{show:showSub==3}">
-                    <span ng-class="{current: delivery2.id==1}" ng-click="changeSort(delivery2,1,'配送费不限')">配送费不限&nbsp;&nbsp;<i class="icon"></i></span>
-                    <span ng-class="{current: delivery2.id==3}" ng-click="changeSort(delivery2,3,'无起送金额')">无起送金额&nbsp;&nbsp;<i class="icon"></i></span>
-                    <span ng-class="{current: delivery2.id==2}" ng-click="changeSort(delivery2,2,'免配送费')">免配送费&nbsp;&nbsp;<i class="icon"></i></span>
+                    <span ng-class="{current: delivery2.id==1}" ng-click="changeSort(delivery2,1,'配送费不限')">配送费不限&nbsp;&nbsp;<i class="icn"></i></span>
+                    <span ng-class="{current: delivery2.id==3}" ng-click="changeSort(delivery2,3,'无起送金额')">无起送金额&nbsp;&nbsp;<i class="icn"></i></span>
+                    <span ng-class="{current: delivery2.id==2}" ng-click="changeSort(delivery2,2,'免配送费')">免配送费&nbsp;&nbsp;<i class="icn"></i></span>
                 </div>
                 <div class="bottom" ng-show="showSub>0" ng-click="showSub=0"><span></span></div>
     </div>
@@ -35,7 +39,7 @@
 <div class="mask locateMask" ng-show="showAddress">
     <div class="locateView">
         <div class="d1">无法定位您的地址，请重新输入！</div>
-        <div class="d2"><input type="text" placeholder="请输入您的地址" ng-model="customAddress"/><i class="icon" ng-click="customAddress=''"></i></div>
+        <div class="d2"><input type="text" placeholder="请输入您的地址" ng-model="customAddress"/><i class="icn" ng-click="customAddress=''"></i></div>
         <div class="d3"></div>
         <div class="d4"><span class="btn cancel" ng-click="showAddress=false">取消</span><span class="confirm btn bg-green" ng-click="confirmAddress()">确定</span></div>
     </div>

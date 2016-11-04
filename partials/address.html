@@ -1,21 +1,21 @@
 <div class="addressView2 font-black font-15">
    <div class="bg-white">
        <div class="line">
-           <input type="text" ng-model="address.contactName" class="name" placeholder="收货人姓名" maxlength="18"/>
-           <div class="right x" ng-click="address.contactName=''"></div>
+           <input type="text" ng-model="address.contactName" class="name" placeholder="收货人姓名" maxlength="18" title="收货人姓名"/>
+           <div class="right icn" ng-click="address.contactName=''"></div>
        </div>
        <div class="line">
-           <input type="text" ng-model="address.address" class="address" placeholder="详细地址" maxlength="30"/><br>
+           <input type="text" ng-model="address.address" class="address" placeholder="详细地址" maxlength="30" title="详细地址"/><br>
            <span class="font-orange font-12" ng-show="addressErr">地址不存在</span>
-           <div class="right x" ng-click="address.address=''"></div>
+           <div class="right icn" ng-click="address.address=''"></div>
        </div>
        <div class="line">
-           <input type="tel" ng-model="address.phone" class="phone" placeholder="联系电话" maxlength="20"/><br>
+           <input type="tel" ng-model="address.phone" class="phone" placeholder="联系电话" maxlength="20" title="联系电话"/><br>
            <span class="font-orange font-12" ng-show="phoneErr">联系电话格式不正确</span>
-           <div class="right x" ng-click="address.phone=''"></div>
+           <div class="right icn" ng-click="address.phone=''"></div>
        </div>       
        <div class="line font-gray">设为默认<span class="round2 right" ng-class="{round2Selected:address.defaultSet}" ng-click="address.defaultSet=!address.defaultSet"><i></i></span></div>
    </div>
-   <div class="save btn bg-orange" ng-class="{'bg-disable':!address.contactName||!address.address||!address.phone}" ng-click="save()">保 存</div>
+   <div style="padding:15px;"><button class="save btn bg-orange" ng-disabled="!address.contactName||!address.address||!address.phone" ng-click="save()">保 存</button></div>
 </div>
 <div ng-include src="'partials/menu2.html'" class="topTitle2 posTitle"></div>
