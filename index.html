@@ -21,7 +21,7 @@
                 <div class="user">
                     <div class="u1" ng-if="!user">
                         <div>您还未登录</div>
-                        <div class="btn font-green"><a href="" class="font-green" ng-click="$root.showSign=true;$root.signType=true;">登录  / 注册</a></div>
+                        <div class="btn font-green" ng-click="$root.showSign=true;$root.signType=true;"><a href="" class="font-green">登录  / 注册</a></div>
                     </div>
                     <div class="u2" ng-if="user">
                         <i class="icon"></i>
@@ -96,9 +96,7 @@
         </div> 
         <div class="alertPop"></div>
           <script src="js/libs/jquery-1.10.2.min.js"></script>          
-    <script src="js/libs/angular.min.js"></script>
-    <script src="js/libs/angular-route.min.js"></script>
-    <script src="js/libs/angular-resource.min.js"></script>
+    <script src="build/angular.min.js"></script>
 <!--    <script src="https://api.map.baidu.com/api?v=2.0&ak=UMgv3OC6YsXrEwSFV0YBGGiO"></script>-->
 <!--
     <script>
@@ -113,7 +111,7 @@
     <script src="js/util.js"></script>
 -->
     
-    <script src="js/all.js"></script>
+    <script src="build/all.js"></script>
     </body>
   
 </html>
