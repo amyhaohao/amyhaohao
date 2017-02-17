@@ -22,7 +22,7 @@
   
     <div class="amount">
         <div>小计：<span>&yen; {{subTotal.toFixed(1)}}</span></div>
-        <div>运费：<span>&yen; {{delivery=='HOME_DELIVERY'?shop.deliveryFee.toFixed(1):"0.00"}}</span></div>
+        <div>运费：<span>&yen; {{delivery=='HOME_DELIVERY'?shop.deliveryFee.toFixed(1):"0.0"}}</span></div>
     </div>
     <div class="summary bg-white">
         实际应付：<span class="font-red font-18">&yen; {{(subTotal+(delivery=='HOME_DELIVERY'?shop.deliveryFee:0)).toFixed(1)}}</span>
