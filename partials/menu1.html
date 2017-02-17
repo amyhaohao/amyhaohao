@@ -1,4 +1,4 @@
 <div class="topTitle" ng-controller="TopTitleCtrl">
     <i class="icn icon1" ng-click="$root.showSideBar=true"></i>
-    <span class="title" ng-click="go('/addresses')">{{ellipsis(geo.address||address||"正在定位中...")}}</span>
+    <a class="title" ng-click="go('/addresses')">{{ellipsis(geo.address||address||"正在定位中...")}}</a>
 </div>

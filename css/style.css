@@ -113,7 +113,7 @@ body .font-18{font-size:18px;}
 .topTitle .icon1{background-position: 15px 15px;}
 .topTitle .icon2{background-position:15px -16px;display:none;}
 .topTitle .title{font-size:17px;color:#333;}
-.topTitle span.title{padding-right:12px;background:url(../images/icons.png) no-repeat 100% -264px;background-size:27px 550px;display: inline-block;line-height: 20px;}
+.topTitle a.title{padding-right:12px;background:url(../images/icons.png) no-repeat 100% -264px;background-size:27px 550px;display: inline-block;line-height: 20px;}
 .topTitle .b{display:block;position:absolute;right:0;top:0px;width:44px;height:42px;text-align:left;}
 .topTitle .add{font-size:35px;padding-left:10px;}
 .topTitle .edit{background:#fff;border:1px solid #cccccc;}
