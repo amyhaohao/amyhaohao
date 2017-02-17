@@ -3,7 +3,7 @@
 *{box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
 *:before, *:after{box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
 html {-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-size-adjust: 100%; min-height:100%;background:#eee;}
-body{font-size:14px;color: #999;line-height:1.5;font-family:Arial;width:100%;}
+body{font-size:14px;color: #999;line-height:1.5;font-family:微软雅黑,Arial;width:100%;}
 body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,th,img,div,dl,dt,dd,pre,textarea,input,button{margin:0;padding:0}
 button,input,select,textarea{font-family: inherit;font-size: 100%;line-height: normal;}
 textarea {overflow: auto;vertical-align: top;}
