@@ -5,7 +5,7 @@
        <div class="right">下单时间 &nbsp;{{order.no|date:"yyyy-MM-dd HH:mm"}}</div>
     </div>
     <div class="info">
-    共{{order.count}}件<span style="margin-left:17px;">应付</span> &nbsp;<em class="font-red font-15">&yen; {{order.amount.toFixed(2)}}</em><br>
+    共{{order.count}}件<span style="margin-left:17px;">应付</span> &nbsp;<em class="font-red font-15">&yen; {{order.amount.toFixed(1)}}</em><br>
     配送方式 &nbsp;<span class="font-orange">{{order.delivery.getDeliveryName()}}</span><br>
     支付方式 &nbsp;<span class="font-orange">{{order.payment.getPaymentName()}}</span>
     </div>

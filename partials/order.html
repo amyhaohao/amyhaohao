@@ -15,18 +15,17 @@
     <div class="cartDetail bg-white">
         <div ng-repeat="c in cart.items|filter:{check:true}" class="cartItem clearfix">
             <div class="left"><img src="images/44.png" /> {{c.name+c.id}}</div>
-            <div class="right"><span class="font-black font-12">&yen; {{c.price}}</span><span class="font-11 font-gray"> x{{c.quantity}}</span></div>
+            <div class="right"><span class="font-black">&yen; {{c.price.toFixed(1)}}</span><span class="font-gray"> x{{c.quantity}}</span></div>
         </div>
-        <div class="sub font-12 font-gray">小计：<span class="font-15 font-red">&yen; {{subTotal.toFixed(2)}}</span></div>
     </div>
   
   
     <div class="amount">
-        <div>小计：<span>&yen; {{subTotal.toFixed(2)}}</span></div>
-        <div>运费：<span>&yen; {{delivery=='HOME_DELIVERY'?shop.deliveryFee.toFixed(2):"0.00"}}</span></div>
+        <div>小计：<span>&yen; {{subTotal.toFixed(1)}}</span></div>
+        <div>运费：<span>&yen; {{delivery=='HOME_DELIVERY'?shop.deliveryFee.toFixed(1):"0.00"}}</span></div>
     </div>
     <div class="summary bg-white">
-        实际应付：<span class="font-red font-18">&yen; {{(subTotal+(delivery=='HOME_DELIVERY'?shop.deliveryFee:0)).toFixed(2)}}</span>
+        实际应付：<span class="font-red font-18">&yen; {{(subTotal+(delivery=='HOME_DELIVERY'?shop.deliveryFee:0)).toFixed(1)}}</span>
         <span class="btn bg-red" ng-click="submit()">确认订单</span>
     </div>
     <div class="popup mask shipTime" ng-class="{popupShow:showTime}">

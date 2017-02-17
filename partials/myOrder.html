@@ -5,7 +5,7 @@
                 <div class="right font-orange font-15">{{order.status.getOrderStatus()}}</div>
             </div>
             <div>
-                               应付金额&nbsp;&nbsp;<span class="font-red font-18">&yen; {{order.payPrice.toFixed(2)}}</span><br>
+                               应付金额&nbsp;&nbsp;<span class="font-red font-18">&yen; {{order.payPrice.toFixed(1)}}</span><br>
                                 配送方式&nbsp;&nbsp;{{"".getDeliveryName()}}<br>
                                 支付方式&nbsp;&nbsp;{{"".getPaymentName()}}<br>
             </div>
@@ -31,10 +31,10 @@
             <div class="total font-12 clearfix">
                 共{{order.items.length}}件
                 <div class="right">
-                                                   订单总金额： <span>&yen; {{order.totalPrice.toFixed(2)}}</span><br>
-                                                    运费：<span>&yen; 0.00</span><br>
-                                                    优惠金额：<span>&yen; -0.00</span><br>
-                                                    应付金额：<span class="font-red">&yen; {{order.payPrice.toFixed(2)}}</span>
+                                                   订单总金额： <span>&yen; {{order.totalPrice.toFixed(1)}}</span><br>
+                                                    运费：<span>&yen; 0.0</span><br>
+                                                    优惠金额：<span>&yen; -0.0</span><br>
+                                                    应付金额：<span class="font-red">&yen; {{order.payPrice.toFixed(1)}}</span>
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 <div class="myOrdersView font-dark">
         <div class="clearfix scroll">
         <div class="items" ng-repeat="items in data">
-            <div class="item" ng-repeat="d in items" ng-click="detail(d)">
+            <div class="item fade" ng-repeat="d in items" ng-click="detail(d)">
                 <div class="shop"><i class="icn i-shop"></i>{{d.shopName}}<span class="right" ng-class="{'font-orange':d.status=='AWAIT_PAY'||d.status=='SHIPPED'||d.status=='AWAIT_SHIPPED'}">{{d.status.getOrderStatus()}}</span></div>
                 <div class="no font-gray">订单号 &nbsp;{{d.orderNo}}<span class="right">{{d.orderDate|date:'yyyy-MM-dd HH:mm'}}</span></div>
                 <div class="products">
@@ -11,8 +11,8 @@
                     </div>
                 </div>
                 <div class="total font-12 clearfix">共{{d.items.length}}件
-                    <div class="font-gray right">总金额：&yen; {{d.totalPrice.toFixed(2)}} &nbsp;&nbsp;&nbsp;&nbsp;
-                                                     应付金额：<span ng-class="{'font-red':d.status=='AWAIT_PAY','font-black':d.status!='AWAIT_PAY'}">&yen; {{d.payPrice.toFixed(2)}}</span>
+                    <div class="font-gray right">总金额：&yen; {{d.totalPrice.toFixed(1)}} &nbsp;&nbsp;&nbsp;&nbsp;
+                                                     应付金额：<span ng-class="{'font-red':d.status=='AWAIT_PAY','font-black':d.status!='AWAIT_PAY'}">&yen; {{d.payPrice.toFixed(1)}}</span>
                     </div>
                 </div>
                 <div class="btns">

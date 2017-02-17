@@ -8,7 +8,7 @@
         <meta http-equiv="cache-control" content="no-cache" />
         <meta http-equiv="expires" content="0" />
         <meta content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,target-densitydpi=medium-dpi" name="viewport" />
-        <link rel="stylesheet" type="text/css" href="css/style.css?20150313" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
         <script>
             (function(){var l = window.location + "";if(l.indexOf("?rm")!=-1) return;var s = l.split("#");if(s[0].indexOf(".html")==-1 && s[0].charAt(s[0].length-1) != "/") s[0] += "/";s[0] += "?rm="+Math.random();window.location=s.join("#");})();
         </script> 
@@ -17,16 +17,16 @@
        <div class="bodyContainer" ng-class="{sideBarShow:showSideBar}">
             <div ng-view class="viewContainer" autoscroll="true"></div>
             <div class="mask sideBarMask" ng-click="showSideBar=false"></div>
-            <div class="sideBar" ng-controller="SideBarCtrl" ng-click="$parent.showSideBar=false">
+            <div class="sideBar" ng-click="showSideBar=false">
                 <div class="user">
                     <div class="u1" ng-if="!user">
                         <div>您还未登录</div>
-                        <div class="btn font-green" ng-click="$root.showSign=true;$root.signType=true;"><a href="" class="font-green">登录  / 注册</a></div>
+                        <a class="btn font-green" ng-click="changeSType(1)">登录  / 注册</a>
                     </div>
                     <div class="u2" ng-if="user">
                         <i class="icon"></i>
-                        <a href="">{{user.name}}</a>
-                        <span class="font-green" ng-click="logout()">退出</span>
+                        <div>{{user.name}}</div>
+                        <a class="font-green" ng-click="logout()">退出</a>
                     </div>
                 </div>
                 <div class="menu">
@@ -39,50 +39,44 @@
             </div> 
         </div>
         <div ng-controller="CartCtrl">
-            <a id="cartIcon" class="icn" ng-class="{cartIconShow:cartShopId!=-1}" ng-click="$root.showCartDetail=true;checkall=false;cartSvc.checkAll(false)"><span class="bg-orange" ng-show="cart.count>0">{{cart.count}}</span></a>
+            <a id="cartIcon" class="icn" ng-class="{cartIconShow:cartShopId!=-1}" ng-click="$root.showCartDetail=true;cartSvc.checkAll(checkall=false)"><span class="bg-orange">{{cart.count}}</span></a>
             <div class="carts" ng-class="{cartShow:showCartDetail, cartEmpty:cart.count<=0}">
                 <div class="cartDetail">
-                    <div class="shopname font-dark"><i class="icn i-shop"></i>{{cart.shop.name+cart.shop.id}}</div>
-                    <div class="bg-white">
-                        <div class="cartItem" ng-repeat="c in cart.items" ng-move="move($event)">
-                            <span class="icn i-round" ng-class="{roundSelected:c.check}" ng-click="c.check=!c.check"></span><img src="images/44.png" />
-                            <div class="font-black font-15">{{c.name+c.id}}</div>
-                            <div class="price font-dark font-12"><span class="font-red font-18">{{c.price.toFixed(1)}}</span> 元</div>
-                            <span class="quantity"><span ng-click="c.quantity>1?cartSvc.del(c):delCartItem($event, $index);"></span><span class="input" ng-scroll="c.quantity"></span><span ng-click="cartSvc.add(c)"></span></span>
-                            <div class="del bg-red" ng-click="delCartItem($event, $index)">删除</div>
-                        </div>
+                    <div class="shopname"><i class="icn i-shop"></i>{{cart.shop.name+cart.shop.id}}</div>
+                    <div class="cartItem" ng-repeat="c in cart.items" ng-move="move($event)">
+                            <span class="icn i-round" ng-class="{roundSelected:c.check}" ng-click="c.check=!c.check"></span><img ng-src="images/44.png" />
+                            <div>{{c.name+c.id}}</div>
+                            <div class="font-dark font-12"><span class="font-red font-18">{{c.price.toFixed(1)}}</span> 元</div>
+                            <span class="quantity"><span ng-click="c.quantity>1?cartSvc.del(c):delItem($event, $index);"></span><span class="input" ng-scroll="c.quantity"></span><span ng-click="cartSvc.add(c)"></span></span>
+                            <div class="bg-red" ng-click="delItem($event, $index)">删除</div>
                     </div>
                     <div class="empty"><i class="icon"></i><br>购物车空空哒<br>去挑选爱吃的菜菜吧~<br><a href="#!/" class="btn">去逛逛</a></div>
                     <div style="height:49px;"></div>
                 </div>
-                <div class="cartTitle font-dark bg-white font-17">购物车<span class="font-orange" ng-click="$root.showCartDetail=false">关闭</span></div>
-                <div class="cartAmount font-12 bg-white">
-                    <div class="font-15" ng-click="checkall=!checkall;cartSvc.checkAll(checkall)"><span class="icn i-round" ng-class="{roundSelected:checkall}"></span>全选</div>
-                    <div class="r">合计:<span class="font-red font-15">&yen;{{cartSvc.getAmount().toFixed(2)}}</span>不含运费
-                        <button class="bg-red btn font-15" ng-disabled="cartSvc.getCount()<=0" ng-click="commit()">去结算</button>
+                <div class="topTitle">
+                    <a class="font-orange" ng-click="$root.showCartDetail=false">关闭</a>
+                    <div class="title">购物车</div>
+                </div>
+                <div class="cartAmount">
+                    <div ng-click="cartSvc.checkAll(checkall=!checkall)"><span class="icn i-round" ng-class="{roundSelected:checkall}"></span>全选</div>
+                    <div class="r">合计: <span class="font-red font-15">&yen; {{cartSvc.getAmount().toFixed(1)}}</span>
+                    <button class="bg-red btn" ng-disabled="cartSvc.getCount()<=0" ng-click="commit()">去结算</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="signView" ng-class="{signViewShow: showSign}">
-            <div class="signupView" ng-controller="SigninCtrl" ng-show="signType">
-                <input type="text" ng-model="username" placeholder="请输入您的用户名" maxlength="25"/><br>
-                <input type="password" ng-model="password" placeholder="请输入您的密码" class="pass" maxlength="20"/><br>
-                <button class="bg-green btn" ng-disabled="!username||!password" ng-click="signin()">登 录</button><br>
-                <a href="" ng-click="$root.signType=false" class="font-red" style="font-size:18px;">新用户注册</a>
+        <div class="signView" ng-class="{signViewShow: signType>0}">
+            <div class="signCon">
+                <input type="text" ng-model="username" placeholder="请输入您的用户名" maxlength="20"/>
+                <input type="password" ng-model="password" placeholder="请输入您的密码" maxlength="20"/>
+                <input type="password" ng-model="password2" placeholder="请确认您的密码" maxlength="20" ng-hide="signType<2"/>
+                <button class="bg-green btn" ng-disabled="!username||!password" ng-click="sign()" ng-hide="signType==2">登 录</button>
+                <button class="bg-green btn" ng-disabled="!username||!password||!password2" ng-click="sign()" ng-hide="signType!=2">立即注册</button>
+                <a ng-click="changeSType(signType==1?2:1)" class="font-red">{{signType==2?"已有帐户登录":"新用户注册"}}</a>
             </div>
-            <div class="signupView" ng-controller="SignupCtrl" ng-show="!signType">
-                <input type="text" ng-model="username" placeholder="请输入您的用户名" maxlength="25"/><br>
-                <input type="password" ng-model="password" placeholder="请输入您的密码" class="pass" maxlength="20"/><br>
-                <input type="password" ng-model="password2" placeholder="请确认您的密码" class="pass2" maxlength="20"/><br>
-                <button class="bg-green btn" ng-disabled="!username||!password||!password2" ng-click="signup()">立即注册</button>
-                <a href="" ng-click="$root.signType=true" class="font-red" style="font-size:18px;">已有帐户登录</a>
-            </div>
-            <div class="posTitle">
-                <div class="topTitle">
-                    <a class="font-orange" ng-click="cancelSign()" href="">取消</a>
-                    <div class="title">{{signType?"用户登录":"新用户注册"}}</div>
-                </div>
+            <div class="topTitle">
+                <a class="font-orange" ng-click="cancelSign()">取消</a>
+                <div class="title">{{signType==2?"新用户注册":"用户登录"}}</div>
             </div>
         </div>
         <div class="loading">
